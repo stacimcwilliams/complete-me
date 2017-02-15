@@ -6,6 +6,5 @@ export default class Node {
     this.isWord = false;
     this.children = {};
     this.prefixes = 0;
-    this.complete = false;
   }
 }
