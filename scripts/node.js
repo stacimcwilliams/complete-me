@@ -1,7 +1,11 @@
 
 export default class Node {
-  constructor(data, next = null) {
+  constructor(data) {
     this.data = data;
-    this.next = next;
+    // this.next = next;
+    this.isWord = false;
+    this.children = {};
+    this.prefixes = 0;
+    this.complete = false;
   }
 }

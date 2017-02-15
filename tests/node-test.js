@@ -13,9 +13,9 @@ it('should have data', function() {
   var node = new Node('info');
   assert.equal(node.data, 'info');
 })
-it('should have a default empty nextNode', function() {
-  var node = new Node('pizza');
-  expect(node.next).to.eq(null);
-})
+// it('should have a default empty nextNode', function() {
+//   var node = new Node('pizza');
+//   expect(node.next).to.eq(null);
+// })
 
 });
