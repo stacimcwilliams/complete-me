@@ -20,7 +20,6 @@ describe('Trie', function() {
     let trie = new Trie()
     trie.insert('pizza')
     trie.insert('peter')
-    console.log(JSON.stringify(trie.root, null, 4));
     assert.equal(trie.length,2)
   });
 
@@ -35,7 +34,7 @@ describe('Trie', function() {
     trie.count(node);
     trie.insert('pizza')
     trie.insert('peter')
-    console.log(trie.count)
+    // console.log(trie.count)
     expect(trie.length).to.equal(2);
   });
 
@@ -45,18 +44,22 @@ describe('Trie', function() {
     assert.isFunction(trie.suggest);
   });
 
-  it('suggest function should return matches to partial words', function() {
-    var trie = new Trie();
-    trie.insert('pizza');
-    trie.insert('hotdog');
-    trie.insert('hog');
-    expect(trie.suggest('ho')).to.equal(['hotdog', 'hog']);
-  });
+    it('suggest function should return matches to partial words', function() {
+      var trie = new Trie();
+      trie.insert('pizza');
+      trie.insert('hotdog');
+      // trie.insert('hog');
+      // console.log(JSON.stringify(trie.root, null, 4));
+
+      trie.suggest('hot')
+      // console.log(JSON.stringify(trie.root, null, 4));
+
+      assert.deepEqual(trie.suggestions,['hotdog']);
+    });
 
   it('should be able to check if property to exist on root', function() {
     var trie = new Trie();
     trie.insert('bananas');
-    console.log(trie.root.children);
     expect(trie.root.children).to.have.property('b');
   });
 

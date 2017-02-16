@@ -5,6 +5,6 @@ export default class Node {
     // this.next = next;
     this.isWord = false;
     this.children = {};
-    this.prefixes = 0;
+    // this.prefixes = 0;
   }
 }
