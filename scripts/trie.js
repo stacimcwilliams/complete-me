@@ -4,66 +4,73 @@ export default class Trie {
   constructor() {
     this.root = new Node('');
     this.length = 0;
-    this.suggestions = []
+    this.suggestions = [];
   }
 
-  populate(dictionary) {
-    let dictionary = fs.readFileSync(text).toString('utf-8').trim().split('\n')
-    dictionary.forEach((word) => {
-      this.insert(word)
-      console.log('hi')
-    }
-
+  populate(array) {
+    array.forEach((word) => {
+      this.insert(word);
+    });
   }
 
   insert(word) {
     let wordArr = word.split('');
-    let current = this.root
+    let current = this.root;
 
-    wordArr.forEach((letter,index) => {
-      if(current.children[letter]) {
-        current = current.children[letter]
+    wordArr.forEach((letter) => {
+      if (current.children[letter]) {
+        current = current.children[letter];
+
       } else {
-        current.children[letter] = new Node(letter)
-        current = current.children[letter]
+        current.children[letter] = new Node(letter);
+        current = current.children[letter];
       }
-    })
+    });
     current.isWord = true;
     this.length++;
   }
 
   count() {
     return this.length;
+    //reqrite count to check is if word
   }
 
   suggest(string) {
     let currentNode = this.root;
     let letters = string.split('');
 
-    letters.forEach((letter) => {
-      if (currentNode.children[letter]) {
-        currentNode = currentNode.children[letter]
+    for (var i = 0; i < letters.length; i++) {
+
+      if (currentNode.children[letters[i]]) {
+        currentNode = currentNode.children[letters[i]];
       } else {
-        return null
+        return null;
       }
-    })
-
-    this.words(currentNode, string)
-  }
-
-  words(node, string) {
-    if (node.isWord) {
-      this.suggestions.push(string)
     }
 
-    let nodeKeys = Object.keys(node.children)
+    return this.words(currentNode, string);
+  }
+
+  words(current, string) {
+
+    if (current.isWord) {
+      this.suggestions.push(string);
+    }
+
+    let nodeKeys = Object.keys(current.children);
 
     nodeKeys.forEach((letter) => {
-      let nextNode = node.children[letter]
+      let nextNode = current.children[letter];
       this.words(nextNode, string + letter);
-    })
+    });
+    return this.suggestions;
+  }
+
+  select() {
+
   }
 }
+
 // words(node,string) {
 
 // }
