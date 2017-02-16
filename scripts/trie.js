@@ -17,7 +17,7 @@ export default class Trie {
     let wordArr = word.split('');
     let current = this.root;
 
-    wordArr.forEach((letter) => {
+    wordArr.forEach(letter => {
       if (current.children[letter]) {
         current = current.children[letter];
 
@@ -66,9 +66,9 @@ export default class Trie {
     return this.suggestions;
   }
 
-  select() {
-
-  }
+  // select(node,string) {
+  //
+  // }
 }
 
 // words(node,string) {
