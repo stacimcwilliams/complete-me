@@ -3,5 +3,7 @@ export default class Node {
     this.data = data;
     this.isWord = false;
     this.children = {};
+    this.selectedSubstring = false;
+    this.priorityWeight = 0;
   }
 }
