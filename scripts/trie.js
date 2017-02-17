@@ -31,10 +31,6 @@ export default class Trie {
     this.length++;
   }
 
-  count() {
-    return this.length;
-  }
-
   suggest(string) {
     let currentNode = this.root;
     let letters = string.split('');
@@ -51,6 +47,17 @@ export default class Trie {
     return this.words(currentNode, string);
   }
 
+  count() {
+    let currentNode = this.root;
+
+    if (currentNode.children) {
+      currentNode = currentNode.children;
+    } if (currentNode.isWord === true) {
+      this.length ++;
+    }
+    return this.length;
+  }
+  
   words(current, string) {
 
     if (current.isWord) {
