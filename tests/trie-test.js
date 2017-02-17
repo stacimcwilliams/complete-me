@@ -10,7 +10,7 @@ describe('Trie', function() {
 
   beforeEach(() => {
     trie = new Trie ();
-  })
+  });
 
   it('should be a function',() => {
     assert.isFunction(Trie);
